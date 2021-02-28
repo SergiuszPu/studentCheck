@@ -1,0 +1,13 @@
+<div class="p-d-flex">
+    <span class="status" [class.checkedIn]="detail.checkedIn"></span>
+    <div *ngIf="!editing" class="p-mr-2">
+        {{detail.name}}
+    </div>
+    <div *ngIf="editing" class="p-mr-2">
+        <input type="text" pInputText [(ngModel)]="detail.name" (input)="onNameChange(name.value)" #name />
+    </div>
+    <div class="subject" class="p-mr-2">
+        {{detail.subject}}
+    </div>
+    <button pButton type="button" label='Edit' (click)="toggleEdit()"></button>
+</div>
