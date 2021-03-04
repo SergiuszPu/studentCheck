@@ -1,6 +1,6 @@
 export interface Students {
-    id: number,
-    name: string,
-    subject: string,
-    checkedIn: boolean
+    id: number;
+    firstname: string;
+    lastname: string;
+    age: number
 }

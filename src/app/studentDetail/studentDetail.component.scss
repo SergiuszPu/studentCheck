@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.table {
+    width: 500px;
+    border: 1px solid rgb(150, 129, 129);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.box {
+    width: 500px;
+}
+
+.box li {
+    border: 1px solid rgb(150, 129, 129);
+    border-radius: 10px;
+    list-style-type: none;
+    width: 400px;
+    margin: 8px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    margin: 5px;
+}
+

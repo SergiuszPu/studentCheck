@@ -2,26 +2,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { StudentComponent } from './smart/student/student.component';
-import { StudentCountComponent } from './dumb/studentCount/studentCount.component';
-import { StudentDetailComponent } from './dumb/studentDetail/studentDetail.component';
+import { StudentComponent } from './student/student.component';
+import { StudentDetailComponent } from './studentDetail/studentDetail.component';
 
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+
+import { ItemsService } from './service/items.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentComponent,
-    StudentCountComponent,
     StudentDetailComponent
   ],
   imports: [
     BrowserModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ItemsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
