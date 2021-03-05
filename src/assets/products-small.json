@@ -1,0 +1,28 @@
+{
+	"products": [
+		{
+			"id": "1",
+			"name": "Sergiusz",
+			"lastname": "Pu",
+			"age": "35"
+		},
+		{
+			"id": "2",
+			"name": "Jim",
+			"lastname": "Raba",
+			"age": "32"
+		},
+		{
+			"id": "3",
+			"name": "Jack",
+			"lastname": "Daniels",
+			"age": "88"
+		},
+		{
+			"id": "4",
+			"name": "SMolly",
+			"lastname": "Mallo",
+			"age": "35"
+		}
+	]
+}

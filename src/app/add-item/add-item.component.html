@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="table p-shadow-19">
+        <form [formGroup]="userForm">
+            <div class="p-field p-col-2 p-md-4">
+                <div class="form-row">
+                    <div class="">
+                        <div class="">
+                            <label for="inputtext">Name</label>
+                        </div>
+                        <div class="form-row">
+                            <div class="">
+                                <input type="text" id="inputtext" pInputText formControlName="name"
+                                    class='form-control' placeholder="name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="">
+                            <label for="">Lastname</label>
+                        </div>
+                        <div class="">
+                            <div class="">
+                                <input type="text" pInputText formControlName="lastname" class='form-control'
+                                    placeholder="lastname" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="">
+                            <label for="">Age</label>
+                        </div>
+                        <div class="">
+                            <div class="">
+                                <input type="number" pInputText formControlName="age" class='form-control'
+                                    placeholder="age" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button pButton type="button" label="Add Item" class="p-button-succes"
+                            (click)="onAdd()"></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>

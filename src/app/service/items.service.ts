@@ -1,61 +1,93 @@
-import { Students } from "../models/students.model";
+import { Product } from "../models/product.model";
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class ItemsService {
     constructor() { }
 
-    getItems: Students[] = [{
-        id: 1,
-        firstname: 'Sergiusz',
-        lastname: 'Pu',
-        age: 35
-    }, {
-        id: 2,
-        firstname: 'Łukasz',
-        lastname: 'Kmiecik',
-        age: 22
-    }, {
-        id: 3,
-        firstname: 'Hania',
-        lastname: 'Zdym',
-        age: 23
-    }, {
-        id: 4,
-        firstname: 'Karol',
-        lastname: 'Sur',
-        age: 24
-    }, {
-        id: 5,
-        firstname: 'Agata',
-        lastname: 'Perl',
-        age: 25
-    }
-    ];
+    getProducts: Product[] = [
+        {
+            id: '1',
+            name: 'Sergiusz',
+            lastname: 'Pu',
+            age: '35'
+        }, {
+            id: '2',
+            name: 'Łukasz',
+            lastname: 'Kmiecik',
+            age: '45'
+        }, {
+            id: '3',
+            name: 'Hania',
+            lastname: 'Zdym',
+            age: '23'
+        }, {
+            id: '4',
+            name: 'Karol',
+            lastname: 'Sur',
+            age: '23'
+        }, {
+            id: '5',
+            name: 'Agata',
+            lastname: 'Perl',
+            age: '23'
+        }
+    ]
 
-    getStudents() {
-        return this.getItems
+    // getProducts(): Product[] {
+    //     return [{
+    //         id: '1',
+    //         name: 'Sergiusz',
+    //         lastname: 'Pu',
+    //         age: '35'
+    //     }, {
+    //         id: '2',
+    //         name: 'Łukasz',
+    //         lastname: 'Kmiecik',
+    //         age: '45'
+    //     }, {
+    //         id: '3',
+    //         name: 'Hania',
+    //         lastname: 'Zdym',
+    //         age: '23'
+    //     }, {
+    //         id: '4',
+    //         name: 'Karol',
+    //         lastname: 'Sur',
+    //         age: '23'
+    //     }, {
+    //         id: '5',
+    //         name: 'Agata',
+    //         lastname: 'Perl',
+    //         age: '23'
+    //     }
+    // ]}
+
+
+    getProduct() {
+        return this.getProducts
     }
 
     addStudent(item) {
-        this.getItems.push(item)
-        console.log(this.getItems);
+        this.getProducts.push(item)
+        console.log(this.getProducts);
     }
 
     removeStudent(event) {
-        // this.getItems.splice(event.id , 1)
-        this.getItems = this.getItems.filter(item => {
-            console.log(item.firstname, event.firstname);
-            return item.firstname !== event.firstname
+        this.getProducts = this.getProducts.filter(item => {
+            console.log(item.id, event.id);
+            return item.id !== event.id
         })
-        console.log(this.getItems);
+        console.log('get products:', this.getProducts);
     }
 
-    editItem(event: Students) {
-        this.getItems = this.getItems.map((item: Students) => {
+    editItem(event: Product) {
+        this.getProducts= this.getProducts.map((item: Product) => {
             if (item.id === event.id) {
                 item = Object.assign({}, item, event)
             }
             return item
         })
-        console.log(this.getItems);
+        console.log("seervice:",this.getProducts);
     }
 }
