@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { ItemsService } from '../service/items.service';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+// import { ItemsService } from '../service/items.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Product } from '../models/product.model';
+
 
 @Component({
     selector: 'app-add-item',
@@ -8,11 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./add-item.component.scss']
 })
 
-export class AddOItemComponent {
+export class AddItemComponent implements OnInit {
+
+    @Output() addData = new EventEmitter<Product[]>()
 
     userForm: FormGroup;
     
-    constructor(private studentsService: ItemsService, private fb: FormBuilder) {
+    constructor(private fb: FormBuilder) {
         this.userForm = this.fb.group({
             id: [this.generateId()],
             name: ['', Validators.required],
@@ -21,15 +25,28 @@ export class AddOItemComponent {
         });
     }
     
+    ngOnInit() {}
+
+    onSubmit(form) {
+        console.log("add-item", form.value);
+    }
+
     onAdd() {
-        this.studentsService.addStudent(this.userForm.value)
+        this.addData.emit(this.userForm.value)
+        console.log("add-item", this.userForm.value);
+        // this.studentsService.addStudent(this.userForm.value)
         this.userForm.reset()
+        this.userForm.patchValue({  
+              'id': this.generateId(), 
+              'name': '' ,
+              'lastname': '', 
+              'age': '' 
+          });
     }
 
     generateId() {
         let text = "";
         let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
         for (var i = 0; i < 5; i++) {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         }

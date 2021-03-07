@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ItemsService } from '../service/items.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-list',
@@ -12,6 +13,9 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class ListComponent implements OnInit {
 
     @Input() detail: Product[];
+    @Output() removeData: EventEmitter<Product[]> = new EventEmitter()
+
+    productsData: Product[];
 
     editing: boolean = false
     added: boolean = false
@@ -19,18 +23,21 @@ export class ListComponent implements OnInit {
     cols: any[];
     userForm: FormGroup;
 
-    constructor(private productService: ItemsService, private fb: FormBuilder) {
+    constructor(private productService: ItemsService, private fb: FormBuilder, private route: ActivatedRoute,
+        private router: Router) {
         this.userForm = this.fb.group({
             id: [''],
             name: ['', Validators.required],
             lastname: ['', Validators.required],
             age: ['', Validators.required],
         });
+
     }
 
     ngOnInit() {
-
-
+        console.log('List',this.detail);
+        this.productsData = this.detail
+        
         this.cols = [
             { field: 'id', header: 'ID' },
             { field: 'name', header: 'Name' },
@@ -38,6 +45,10 @@ export class ListComponent implements OnInit {
             { field: 'age', header: 'Age' }
         ];
     }
+
+    onEditRecipe() {
+        this.router.navigate(['add'], {relativeTo: this.route});
+      }
 
     // toggleEdit() {
     //     this.editing = !this.editing;
@@ -48,12 +59,9 @@ export class ListComponent implements OnInit {
     // }
 
     onRemove(event) {
-        this.productService.removeStudent(event)
-        this.detail = this.detail.filter(item => {
-            console.log(item.id, event.id);
-            return item.id !== event.id
-        })
-        console.log(' componennt.ts', event.id);
+        this.removeData.emit(event)
+        console.log("list: ",event);
+        
     }
 
     editObject = []
