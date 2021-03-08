@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenubarModule } from 'primeng/menubar';
+import { AddFormComponent } from './add-form/add-form.component';
 
 // Routing
 import { Routes, RouterModule } from '@angular/router';
@@ -25,7 +26,7 @@ import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'list', component: ItemsDeliverComponent },
-  { path: 'add', component: AddItemComponent },
+  { path: 'add', component: AddFormComponent },
 ];
 
 @NgModule({
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     ItemsDeliverComponent,
     ListComponent,
     AddItemComponent,
-    HomeComponent
+    HomeComponent,
+    AddFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Base } from '../models/base.model';
 
@@ -11,6 +11,7 @@ import { Base } from '../models/base.model';
 
 export class  AddItemComponent implements OnInit {
 
+  @Input() studentArray: Base[];
   @Output() addData = new EventEmitter<Base>();
 
   userForm: FormGroup;
