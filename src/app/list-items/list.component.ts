@@ -1,87 +1,72 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Product } from '../models/product.model';
-import { ItemsService } from '../service/items.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Base } from '../models/base.model';
 
 @Component({
-    selector: 'app-list',
-    templateUrl: './list.component.html',
-    styleUrls: ['./list.component.scss']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
 
 export class ListComponent implements OnInit {
 
-    @Input() detail: Product[];
-    @Output() removeData: EventEmitter<Product[]> = new EventEmitter()
+  constructor(private fb: FormBuilder, private route: ActivatedRoute,
+              private router: Router) {
+    this.userForm = this.fb.group({
+      id: [''],
+      name: ['', Validators.required],
+      lastname: ['', Validators.required],
+      age: ['', Validators.required],
+    });
+  }
 
-    productsData: Product[];
+  @Input() detail: Base;
+  @Output() removeData: EventEmitter<Base> = new EventEmitter();
+  @Output() editData: EventEmitter<Base> = new EventEmitter();
 
-    editing: boolean = false
-    added: boolean = false
+  editing = false;
+  added = false;
 
-    cols: any[];
-    userForm: FormGroup;
+  cols: any[];
+  userForm: FormGroup;
 
-    constructor(private productService: ItemsService, private fb: FormBuilder, private route: ActivatedRoute,
-        private router: Router) {
-        this.userForm = this.fb.group({
-            id: [''],
-            name: ['', Validators.required],
-            lastname: ['', Validators.required],
-            age: ['', Validators.required],
-        });
+  editObject = [];
 
-    }
+  ngOnInit() {
+    this.cols = [
+      { field: 'id', header: 'ID' },
+      { field: 'firstname', header: 'Firstname' },
+      { field: 'lastname', header: 'Lastname' },
+      { field: 'age', header: 'Age' }
+    ];
+  }
 
-    ngOnInit() {
-        console.log('List',this.detail);
-        this.productsData = this.detail
-        
-        this.cols = [
-            { field: 'id', header: 'ID' },
-            { field: 'name', header: 'Name' },
-            { field: 'lastname', header: 'Lastname' },
-            { field: 'age', header: 'Age' }
-        ];
-    }
+  onEdit() {
+    this.editData.emit();
+  }
 
-    onEditRecipe() {
-        this.router.navigate(['add'], {relativeTo: this.route});
-      }
+  onRemove(event) {
+    this.removeData.emit(event);
+    console.log('list: ', event);
+  }
 
-    // toggleEdit() {
-    //     this.editing = !this.editing;
-    // }
+  // handleEdit(event: Product) {
+  //     console.log(event);
+  //     this.editObject.push(event);
+  //     // this.productService.editItem(event)
+  // }
 
-    // addstudent() {
-    //     this.added = !this.added
-    // }
-
-    onRemove(event) {
-        this.removeData.emit(event)
-        console.log("list: ",event);
-        
-    }
-
-    editObject = []
-
-    handleEdit(event: Product) {
-        console.log(event);
-        this.editObject.push(event)
-        // this.productService.editItem(event)
-    }
-
-    pushEdit(event) {
-        this.productService.editItem(event)
-        console.log(event);
-        // this.userForm.reset()
-        // this.detail = this.detail.map((item: Product) => {
-        //     if (item.id === event.id) {
-        //         item = Object.assign({}, item, event)
-        //     }
-        //     return item
-        // })
-        this.editing = !this.editing
-    }
+  // pushEdit(event) {
+  //     this.productService.editItem(event);
+  //     console.log(event);
+  //     // this.userForm.reset()
+  //     // this.detail = this.detail.map((item: Product) => {
+  //     //     if (item.id === event.id) {
+  //     //         item = Object.assign({}, item, event)
+  //     //     }
+  //     //     return item
+  //     // })
+  //     this.editing = !this.editing;
+  // }
 }

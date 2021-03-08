@@ -18,15 +18,15 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MenubarModule} from 'primeng/menubar';
 
-//Routing
+// Routing
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'list', component: ListComponent },
+  { path: 'list', component: ItemsDeliverComponent },
   { path: 'add', component: AddItemComponent },
-]
+];
 
 @NgModule({
   declarations: [
