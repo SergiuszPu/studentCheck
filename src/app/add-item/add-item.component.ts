@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-// import { ItemsService } from '../service/items.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../models/product.model';
 
@@ -15,7 +14,7 @@ export class AddItemComponent implements OnInit {
     @Output() addData = new EventEmitter<Product[]>()
 
     userForm: FormGroup;
-    
+
     constructor(private fb: FormBuilder) {
         this.userForm = this.fb.group({
             id: [this.generateId()],
@@ -24,7 +23,7 @@ export class AddItemComponent implements OnInit {
             age: ['', Validators.required],
         });
     }
-    
+
     ngOnInit() {}
 
     onSubmit(form) {
@@ -36,11 +35,11 @@ export class AddItemComponent implements OnInit {
         console.log("add-item", this.userForm.value);
         // this.studentsService.addStudent(this.userForm.value)
         this.userForm.reset()
-        this.userForm.patchValue({  
-              'id': this.generateId(), 
+        this.userForm.patchValue({
+              'id': this.generateId(),
               'name': '' ,
-              'lastname': '', 
-              'age': '' 
+              'lastname': '',
+              'age': ''
           });
     }
 
