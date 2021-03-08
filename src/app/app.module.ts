@@ -9,14 +9,14 @@ import { ListComponent } from './list-items/list.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 
-import { ItemsService } from './service/items.service';
+import { StudentsService } from './service/students.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddItemComponent } from './add-item/add-item.component';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MenubarModule} from 'primeng/menubar';
+import { MenubarModule } from 'primeng/menubar';
 
 // Routing
 import { Routes, RouterModule } from '@angular/router';
@@ -49,7 +49,7 @@ const appRoutes: Routes = [
     MenubarModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ItemsService],
+  providers: [StudentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-// import { ItemsService } from '../service/items.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Base } from '../models/base.model';
 
@@ -25,13 +24,13 @@ export class  AddItemComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  onSubmit(form) {
+  onSubmit(form): void {
     console.log('add-item', form.value);
   }
 
-  onAdd() {
+  onAdd(): void {
     this.addData.emit(this.userForm.value);
     console.log('add-item', this.userForm.value);
     this.userForm.reset();
@@ -43,7 +42,7 @@ export class  AddItemComponent implements OnInit {
     });
   }
 
-  generateId() {
+  generateId(): string {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     for (let i = 0; i < 5; i++) {

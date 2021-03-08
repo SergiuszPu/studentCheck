@@ -1,12 +1,9 @@
 <div class="container">
   <app-list
     [detail]="products"
+    [cols]="columns"
     (removeData)="onRemove($event)"
     (editData)="onEdit()"
   >
   </app-list>
-  <!--    <app-add-item-->
-  <!--    (addData)="onAdd($event)"-->
-  <!--    >-->
-  <!--    </app-add-item>-->
 </div>

@@ -4,12 +4,14 @@
             <th *ngFor="let col of columns">
                 {{col.header}}
             </th>
+          <th>
+          </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
             <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
+                {{rowData[col.fieldName]}}
             </td>
             <td>
                 <button pButton type="button" label="Remove" class="p-button-danger" (click)="onRemove(rowData)">
@@ -21,14 +23,4 @@
     </ng-template>
 </p-table>
 
-<!-- <div *ngIf="!editing">
-    <div *ngIf="!ed">
-        <div *ngFor="let el of editObject; let i = index">
-            <input type="text" pInputText placeholder="{{el.name}}" [(ngModel)]="el.name">
-            <input type="text" pInputText placeholder="{{el.lastname}}" [(ngModel)]="el.lastname">
-            <input type="text" pInputText placeholder="{{el.age}}" [(ngModel)]="el.age">
-            <button pButton type="button" label="Add Change" class="p-button-danger" (click)="pushEdit(el)">
-            </button>
-        </div>
-    </div>
-</div> -->
+
