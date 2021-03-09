@@ -6,12 +6,12 @@ import { Student } from '../../models/student.model';
 
 
 @Component({
-  selector: 'app-add-form',
-  templateUrl: './add-form.component.html',
-  styleUrls: ['./add-form.component.scss']
+  selector: 'app-add-student',
+  templateUrl: './add-student.component.html',
+  styleUrls: ['./add-student.component.scss']
 })
 
-export class  AddFormComponent implements OnInit {
+export class  AddStudentComponent implements OnInit {
 
   studentsList: Student[];
 
@@ -22,6 +22,9 @@ export class  AddFormComponent implements OnInit {
     this.studentsList = this.studentService.getStudentsList();
   }
 
+  AddNewStudent(data): void {
+    this.studentService.addStudent(data);
+  }
   // onAdd(): void {
   //   this.addData.emit(this.userForm.value);
   //   console.log('forms', this.userForm.value);

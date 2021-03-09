@@ -12,6 +12,8 @@ import { Col } from '../../models/col.model';
 
 export class ListComponent implements OnInit {
 
+  // userForm: FormGroup;
+
   constructor(private fb: FormBuilder, private route: ActivatedRoute,
               private router: Router) {
 
@@ -25,12 +27,6 @@ export class ListComponent implements OnInit {
     //   age: ['', Validators.required],
     // });
 
-    // this.userForm = this.fb.group({
-    //   id: [''],
-    //   name: ['', Validators.required],
-    //   lastname: ['', Validators.required],
-    //   age: ['', Validators.required],
-    // });
   }
 
   @Input() detail: Base[];
@@ -40,9 +36,6 @@ export class ListComponent implements OnInit {
 
   editing = false;
   added = false;
-
-
-  userForm: FormGroup;
 
   editObject = [];
 

@@ -16,7 +16,6 @@ export class ListStudentComponent implements OnInit {
   products: Student[];
   columns: Col[];
 
-
   constructor(private productService: StudentsService, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -26,7 +25,7 @@ export class ListStudentComponent implements OnInit {
   }
 
   onEdit(): void {
-    this.router.navigate(['/add'], {relativeTo: this.route});
+    this.router.navigate(['/edit'], {relativeTo: this.route});
   }
 
   onRemove(event): void {

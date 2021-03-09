@@ -4,7 +4,7 @@ import { Base } from '../../models/base.model';
 
 
 @Component({
-  selector: 'app-add-item',
+  selector: 'app-forms',
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss']
 })
@@ -12,14 +12,14 @@ import { Base } from '../../models/base.model';
 export class FormsComponent implements OnInit {
 
   @Input() studentArray: Base[];
-  @Output() addData = new EventEmitter<Base>();
+  @Output() addStudent = new EventEmitter<Base>();
 
   userForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.userForm = this.fb.group({
       id: [this.generateId()],
-      name: ['', Validators.required],
+      firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       age: ['', Validators.required],
     });
@@ -32,7 +32,7 @@ export class FormsComponent implements OnInit {
   }
 
   onAdd(): void {
-    this.addData.emit(this.userForm.value);
+    this.addStudent.emit(this.userForm.value);
     console.log('forms', this.userForm.value);
     this.userForm.reset();
     this.userForm.patchValue({
@@ -46,7 +46,7 @@ export class FormsComponent implements OnInit {
   generateId(): string {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;

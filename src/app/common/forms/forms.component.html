@@ -5,12 +5,12 @@
                 <div class="form-row">
                     <div class="">
                         <div class="">
-                            <label for="inputText">Name</label>
+                            <label for="inputText">FirstName</label>
                         </div>
                         <div class="form-row">
                             <div class="">
-                                <input type="text" id="inputText" pInputText formControlName="name"
-                                    class='form-control' placeholder="name" />
+                                <input type="text" id="inputText" pInputText formControlName="firstname"
+                                    class='form-control' placeholder="firstname" />
                             </div>
                         </div>
                     </div>
@@ -40,9 +40,16 @@
                         <button
                           pButton
                           type="button"
-                          label="Add Item"
+                          label="Add"
                           class="p-button-success"
-                          (click)="onAdd()"></button>
+                          (click)="onAdd()">
+                        </button>
+                      <button
+                        pButton
+                        type="button"
+                        label="Edit"
+                        class="p-button-success">
+                      </button>
                     </div>
                 </div>
             </div>
