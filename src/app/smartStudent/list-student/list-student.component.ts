@@ -15,6 +15,7 @@ export class ListStudentComponent implements OnInit {
 
   products: Student[];
   columns: Col[];
+  editStudent: Student[];
 
   constructor(private productService: StudentsService, private route: ActivatedRoute, private router: Router) {
   }
@@ -24,8 +25,11 @@ export class ListStudentComponent implements OnInit {
     console.log('list-student', event);
   }
 
-  onEdit(): void {
-    this.router.navigate(['/edit'], {relativeTo: this.route});
+  onEditStudent(id: string): void {
+    console.log('list-student:' , id);
+    this.router.navigate(['/edit', id], {relativeTo: this.route});
+    this.editStudent =  this.productService.pullEditStudent(id);
+    console.log('obiekt ze studentem', this.editStudent);
   }
 
   onRemove(event): void {

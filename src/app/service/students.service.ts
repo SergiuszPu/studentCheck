@@ -40,14 +40,14 @@ export class StudentsService {
 
   addStudent(item): void {
     this.getStudents.push(item);
-    console.log(this.getStudents);
+    // console.log(this.getStudents);
   }
 
   removeStudent(event): void {
     this.getStudents = this.getStudents.filter(item => {
       return item.id !== event.id;
     });
-    console.log('get products:', this.getStudents);
+    // console.log('get products:', this.getStudents);
   }
 
   editStudent(event: Student): void {
@@ -57,7 +57,16 @@ export class StudentsService {
       }
       return item;
     });
-    console.log('service: ', this.getStudents);
+    // console.log('service: ', this.getStudents);
+  }
+
+  pullEditStudent(id): any {
+    this.getStudents.filter((student: Student) => {
+      if (student.id === id) {
+        console.log('pullEditStudent: ', student);
+        return student;
+      }
+    });
   }
 
 }

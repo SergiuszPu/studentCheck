@@ -1,12 +1,10 @@
 <div class="container">
     <div class="table p-shadow-19">
         <form [formGroup]="userForm" (ngSubmit)="onSubmit(f)" #f>
-            <div class="p-field p-col-2 p-md-4">
+            <div class="p-field p-col-4 p-md-12">
                 <div class="form-row">
                     <div class="">
-                        <div class="">
                             <label for="inputText">FirstName</label>
-                        </div>
                         <div class="form-row">
                             <div class="">
                                 <input type="text" id="inputText" pInputText formControlName="firstname"
@@ -15,15 +13,11 @@
                         </div>
                     </div>
                     <div class="">
-                        <div class="">
                             <label for="lastname">Lastname</label>
-                        </div>
-                        <div class="">
                             <div class="">
                                 <input type="text" id="lastname" pInputText formControlName="lastname" class='form-control'
                                     placeholder="lastname" />
                             </div>
-                        </div>
                     </div>
                     <div>
                         <div>
@@ -32,23 +26,24 @@
                         <div class="">
                             <div class="">
                                 <input type="number" id="age" pInputText formControlName="age" class='form-control'
-                                    placeholder="age" />
+                                   min="15"  placeholder="age" />
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="btn_component">
                         <button
                           pButton
                           type="button"
                           label="Add"
-                          class="p-button-success"
-                          (click)="onAdd()">
+                          class="p-button-primary p-button-lg"
+                          (click)="onAdd()"
+                          [disabled]="userForm.invalid">
                         </button>
                       <button
                         pButton
                         type="button"
                         label="Edit"
-                        class="p-button-success">
+                        class="p-button-success p-button-lg">
                       </button>
                     </div>
                 </div>
