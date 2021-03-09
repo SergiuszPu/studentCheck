@@ -47,7 +47,6 @@ export class StudentsService {
     this.getStudents = this.getStudents.filter(item => {
       return item.id !== event.id;
     });
-    // console.log('get products:', this.getStudents);
   }
 
   editStudent(event: Student): void {
@@ -57,16 +56,9 @@ export class StudentsService {
       }
       return item;
     });
-    // console.log('service: ', this.getStudents);
-  }
-
-  pullEditStudent(id): any {
-    this.getStudents.filter((student: Student) => {
-      if (student.id === id) {
-        console.log('pullEditStudent: ', student);
-        return student;
-      }
-    });
+    console.log('serviceID: ', event.id);
+    
+    console.log('service: ', this.getStudents);
   }
 
 }

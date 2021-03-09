@@ -26,10 +26,8 @@ export class ListStudentComponent implements OnInit {
   }
 
   onEditStudent(id: string): void {
-    console.log('list-student:' , id);
+    console.log('list-studentId:' , id);
     this.router.navigate(['/edit', id], {relativeTo: this.route});
-    this.editStudent =  this.productService.pullEditStudent(id);
-    console.log('obiekt ze studentem', this.editStudent);
   }
 
   onRemove(event): void {
@@ -38,12 +36,11 @@ export class ListStudentComponent implements OnInit {
       console.log(item.id, event.id);
       return item.id !== event.id;
     });
-    console.log(' list-student', event);
   }
 
   ngOnInit(): void {
       this.products = this.productService.getStudentsList();
-      console.log('list-student:', this.products);
+      // console.log('list-student:', this.products);
 
       this.columns = [
         { fieldName: 'id', header: 'ID' },

@@ -1,6 +1,7 @@
 import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, Form, FormControl } from '@angular/forms';
 import { Base } from '../../models/base.model';
+import { Col } from '../../models/col.model';
 
 
 @Component({
@@ -12,34 +13,46 @@ import { Base } from '../../models/base.model';
 export class FormsComponent implements OnInit {
 
   @Input() studentArray: Base[];
-  @Output() addStudent = new EventEmitter<Base>();
+  @Input() editStudent: Base[]
+  @Output() addItems = new EventEmitter<Base>();
+  @Output() editForm = new EventEmitter<Base>();
 
   userForm: FormGroup;
+  @Input() cols: Col[];
 
-  constructor(private fb: FormBuilder) {
-    this.userForm = this.fb.group({
-      id: [this.generateId()],
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      age: ['', Validators.required],
+  constructor() {
+      // const ob = {}
+      // this.cols.forEach(key => ob[key.fieldName] = new FormControl())
+      
+    this.userForm = new FormGroup({
+      id: new FormControl(this.generateId()),
+      firstname:  new FormControl(),
+      lastname: new FormControl(),
+      age: new FormControl(),
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('editStudetn ', this.editStudent);
+    if (this.editStudent) {
+      this.editStudent.forEach(data => this.userForm.setValue({ ...data }));
+    }
+    // const ob = {}
+    // this.cols.(key => ob[key.fieldName] = new FormControl())
+    // this.userForm = new FormGroup(ob)
+  }
 
   onSubmit(form): void {
     console.log('forms', form.value);
+    this.editForm.emit(form.value)
   }
 
   onAdd(): void {
-    this.addStudent.emit(this.userForm.value);
+    this.addItems.emit(this.userForm.value);
     console.log('forms', this.userForm.value);
     this.userForm.reset();
     this.userForm.patchValue({
-      id: this.generateId(),
-      name: '' ,
-      lastname: '',
-      age: ''
+      id: this.generateId()
     });
   }
 

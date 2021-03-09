@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {StudentsService} from '../../service/students.service';
 import { Student } from '../../models/student.model';
+import { Col } from '../../models/col.model';
 
 
 
@@ -14,12 +15,20 @@ import { Student } from '../../models/student.model';
 export class  AddStudentComponent implements OnInit {
 
   studentsList: Student[];
-
+  columns: Col[]
+  
   constructor( private studentService: StudentsService ) {
   }
 
   ngOnInit(): void {
     this.studentsList = this.studentService.getStudentsList();
+
+    this.columns = [
+      { fieldName: 'id', header: 'ID' },
+      { fieldName: 'firstname', header: 'Firstname' },
+      { fieldName: 'lastname', header: 'Lastname' },
+      { fieldName: 'age', header: 'Age' }
+    ];
   }
 
   AddNewStudent(data): void {

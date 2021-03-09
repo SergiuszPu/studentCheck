@@ -15,20 +15,42 @@ import {ActivatedRoute} from '@angular/router';
 export class  EditStudentComponent implements OnInit {
 
   studentsList: Student[];
-  studentId: string | number;
+  studentId: string | number = this.route.snapshot.params.id
   editStudent: Student[];
   constructor( private studentService: StudentsService,
                private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    // this.studentsList = this.studentService.getStudentsList();
+    // this.studentId = this.route.snapshot.params.id;
+    // console.log('studentId: ', this.studentId);
     this.studentsList = this.studentService.getStudentsList();
-    this.studentId = this.route.snapshot.params.id;
-    console.log('studentId: ', this.studentId);
-    this.editStudent = this.studentService.pullEditStudent(this.studentId);
-    console.log('editStudent', this.editStudent);
+    console.log('Edit-stiudentId: ', this.studentId);
+    
+    this.editStudent = this.studentsList.filter((student: Student) => {
+      if (student.id ===  this.studentId) {
+        return student
+      }
+      // console.log('oneStudent', this.editStudent);
+      
+    });
+
   }
 
+  onEditStudent(event) {
+    this.studentService.editStudent(event)
+  }
+  // pullEditStudent(): any {
+  //  this.editStudent = this.studentsList.filter((student: Student) => {
+  //     if (student.id ===  this.studentId) {
+        
+  //       return student
+  //     }
+  //     console.log('oneStudent', this.editStudent);
+      
+  //   });
+  // }
   // onEditStudent(): void {
   //   this.editStudent = this.studentService.pullEditStudent(this.studentId);
   //   console.log('editStudent', this.editStudent);

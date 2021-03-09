@@ -1,6 +1,6 @@
 <div class="container">
     <div class="table p-shadow-19">
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit(f)" #f>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)" #f>
             <div class="p-field p-col-4 p-md-12">
                 <div class="form-row">
                     <div class="">
@@ -41,7 +41,7 @@
                         </button>
                       <button
                         pButton
-                        type="button"
+                        type="submit"
                         label="Edit"
                         class="p-button-success p-button-lg">
                       </button>

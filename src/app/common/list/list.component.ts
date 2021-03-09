@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Base } from '../../models/base.model';
 import { Col } from '../../models/col.model';
@@ -18,17 +18,21 @@ export class ListComponent implements OnInit {
   @Output() removeData: EventEmitter<Base> = new EventEmitter();
   @Output() editData: EventEmitter<Base> = new EventEmitter();
 
-  constructor(private fb: FormBuilder,
-              private route: ActivatedRoute,
-              private router: Router) {
-  }
+  constructor() {}
 
+  userForm: FormGroup;
   editing = false;
   added = false;
 
   editObject = [];
 
   ngOnInit(): void {
+    this.userForm = new FormGroup({
+      // id: new FormControl(),
+      // firstname:  new FormControl(),
+      // lastname: new FormControl(),
+      // age: new FormControl(),
+    });
   }
 
   onEdit(id): void {
@@ -39,33 +43,19 @@ export class ListComponent implements OnInit {
   onRemove(event): void {
     this.removeData.emit(event);
     console.log('list: ', event);
+    
+    // const ob = {};
+
+    // this.cols.forEach(item =>  ob[item.fieldName] = [''])
+
+    //  this.detail.forEach(item => {
+    //    Object.keys(item).forEach(key => ob[key] = new FormControl())
+    //  })
+    //  console.log(ob);
+    //  this.userForm = new FormGroup(ob)
+    //  console.log('value',this.userForm.value);
+     
+      
+   
   }
-
-  // handleEdit(event: Product) {
-  //     console.log(event);
-  //     this.editObject.push(event);
-  //     // this.productService.editItem(event)
-  // }
-
-  // pushEdit(event) {
-  //     this.productService.editItem(event);
-  //     console.log(event);
-  //     // this.userForm.reset()
-  //     // this.detail = this.detail.map((item: Product) => {
-  //     //     if (item.id === event.id) {
-  //     //         item = Object.assign({}, item, event)
-  //     //     }
-  //     //     return item
-  //     // })
-  //     this.editing = !this.editing;
-  // }
-  // const ob = {};
-  // this.cols.forEach(item =>  ob[item.fieldName] = [''])
-
-  // this.userForm = this.fb.group({
-  //   id: [''],
-  //   name: ['', Validators.required],
-  //   lastname: ['', Validators.required],
-  //   age: ['', Validators.required],
-  // });
 }
