@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../models/student.model';
-import { StudentsService } from '../service/students.service';
+import { Student } from '../../models/student.model';
+import { StudentsService } from '../../service/students.service';
 import { ActivatedRoute, Router} from '@angular/router';
-import { Col } from '../models/col.model';
+import { Col } from '../../models/col.model';
 
 
 @Component({
   selector: 'app-items-deliver',
-  templateUrl: './items-deliver.component.html',
-  styleUrls: ['./items-deliver.component.scss']
+  templateUrl: './list-student.component.html',
+  styleUrls: ['./list-student.component.scss']
 })
 
-export class ItemsDeliverComponent implements OnInit {
+export class ListStudentComponent implements OnInit {
 
   products: Student[];
   columns: Col[];
@@ -22,7 +22,7 @@ export class ItemsDeliverComponent implements OnInit {
 
   onAdd(event): void {
     this.productService.addStudent(event);
-    console.log('items-deliver', event);
+    console.log('list-student', event);
   }
 
   onEdit(): void {
@@ -35,12 +35,12 @@ export class ItemsDeliverComponent implements OnInit {
       console.log(item.id, event.id);
       return item.id !== event.id;
     });
-    console.log(' items-deliver', event);
+    console.log(' list-student', event);
   }
 
   ngOnInit(): void {
       this.products = this.productService.getStudentsList();
-      console.log('items-deliver:', this.products);
+      console.log('list-student:', this.products);
 
       this.columns = [
         { fieldName: 'id', header: 'ID' },

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Base } from '../models/base.model';
-import { Col } from '../models/col.model';
+import { Base } from '../../models/base.model';
+import { Col } from '../../models/col.model';
 
 @Component({
   selector: 'app-list',
