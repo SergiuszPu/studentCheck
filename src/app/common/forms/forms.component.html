@@ -3,35 +3,18 @@
         <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)" #f>
             <div class="p-field p-col-4 p-md-12">
                 <div class="form-row">
-                    <div class="">
-                            <label for="inputText">FirstName</label>
+                    <div class="" *ngFor="let data of formData">
+                            <label [for]=data.fieldName>{{data.header}}</label>
                         <div class="form-row">
                             <div class="">
-                                <input type="text" id="inputText" pInputText formControlName="firstname"
-                                    class='form-control' placeholder="firstname" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="">
-                            <label for="lastname">Lastname</label>
-                            <div class="">
-                                <input type="text" id="lastname" pInputText formControlName="lastname" class='form-control'
-                                    placeholder="lastname" />
-                            </div>
-                    </div>
-                    <div>
-                        <div>
-                            <label for="age">Age</label>
-                        </div>
-                        <div class="">
-                            <div class="">
-                                <input type="number" id="age" pInputText formControlName="age" class='form-control'
-                                   min="15"  placeholder="age" />
+                                <input type="text" [id]=data.fieldName pInputText [formControlName]=data.fieldName
+                                    class='form-control' [placeholder]=data.fieldName />
                             </div>
                         </div>
                     </div>
                     <div class="btn_component">
                         <button
+                          *ngIf="!editing"
                           pButton
                           type="button"
                           label="Add"
@@ -40,9 +23,10 @@
                           [disabled]="userForm.invalid">
                         </button>
                       <button
+                        *ngIf="editing"
                         pButton
                         type="submit"
-                        label="Edit"
+                        label="Update"
                         class="p-button-success p-button-lg">
                       </button>
                     </div>

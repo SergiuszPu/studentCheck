@@ -1,10 +1,8 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import {StudentsService} from '../../service/students.service';
 import { Student } from '../../models/student.model';
 import { Col } from '../../models/col.model';
-
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-student',
@@ -15,14 +13,15 @@ import { Col } from '../../models/col.model';
 export class  AddStudentComponent implements OnInit {
 
   studentsList: Student[];
-  columns: Col[]
-  
-  constructor( private studentService: StudentsService ) {
+  columns: Col[];
+
+  constructor( private studentService: StudentsService,
+               private route: ActivatedRoute,
+               private router: Router) {
   }
 
   ngOnInit(): void {
     this.studentsList = this.studentService.getStudentsList();
-
     this.columns = [
       { fieldName: 'id', header: 'ID' },
       { fieldName: 'firstname', header: 'Firstname' },
@@ -33,16 +32,6 @@ export class  AddStudentComponent implements OnInit {
 
   AddNewStudent(data): void {
     this.studentService.addStudent(data);
+    this.router.navigate(['/list'], {relativeTo: this.route});
   }
-  // onAdd(): void {
-  //   this.addData.emit(this.userForm.value);
-  //   console.log('forms', this.userForm.value);
-  //   this.userForm.reset();
-  //   this.userForm.patchValue({
-  //     id: this.generateId(),
-  //     name: '' ,
-  //     lastname: '',
-  //     age: ''
-  //   });
-  // }
 }

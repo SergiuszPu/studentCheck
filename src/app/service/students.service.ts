@@ -13,13 +13,13 @@ export class StudentsService {
       age: '35'
     }, {
       id: '2',
-      firstname: 'Lukasz',
-      lastname: 'Kmiecik',
+      firstname: 'Tedd',
+      lastname: 'Mall',
       age: '45'
     }, {
       id: '3',
-      firstname: 'Hania',
-      lastname: 'Zdym',
+      firstname: 'Michał',
+      lastname: 'Kowalski',
       age: '23'
     }, {
       id: '4',
@@ -29,7 +29,7 @@ export class StudentsService {
     }, {
       id: '5',
       firstname: 'Agata',
-      lastname: 'Perl',
+      lastname: 'Berta',
       age: '23'
     }
   ];
@@ -39,8 +39,13 @@ export class StudentsService {
   }
 
   addStudent(item): void {
-    this.getStudents.push(item);
-    // console.log(this.getStudents);
+    for (const el in item) {
+      if (el === 'id') {
+        item.id = this.getStudents.length + 1 + '';
+        // item.id = this.generateId();
+        this.getStudents.push(item);
+      }
+    }
   }
 
   removeStudent(event): void {
@@ -56,9 +61,14 @@ export class StudentsService {
       }
       return item;
     });
-    console.log('serviceID: ', event.id);
-    
-    console.log('service: ', this.getStudents);
   }
 
+  // generateId(): string {
+  //   let text = '';
+  //   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  //   for (let i = 0; i < 2; i++) {
+  //     text += possible.charAt(Math.floor(Math.random() * possible.length));
+  //   }
+  //   return text;
+  // }
 }

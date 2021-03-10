@@ -13,34 +13,30 @@ import { Col } from '../../models/col.model';
 
 export class ListStudentComponent implements OnInit {
 
-  products: Student[];
+  students: Student[];
   columns: Col[];
   editStudent: Student[];
 
   constructor(private productService: StudentsService, private route: ActivatedRoute, private router: Router) {
   }
 
-  onAdd(event): void {
-    this.productService.addStudent(event);
-    console.log('list-student', event);
-  }
+  // onAdd(event): void {
+  //   this.productService.addStudent(event);
+  // }
 
-  onEditStudent(id: string): void {
-    console.log('list-studentId:' , id);
+  onEditStudent(id): void {
     this.router.navigate(['/edit', id], {relativeTo: this.route});
   }
 
   onRemove(event): void {
     this.productService.removeStudent(event);
-    this.products = this.products.filter(item => {
-      console.log(item.id, event.id);
+    this.students = this.students.filter(item => {
       return item.id !== event.id;
     });
   }
 
   ngOnInit(): void {
-      this.products = this.productService.getStudentsList();
-      // console.log('list-student:', this.products);
+      this.students = this.productService.getStudentsList();
 
       this.columns = [
         { fieldName: 'id', header: 'ID' },
