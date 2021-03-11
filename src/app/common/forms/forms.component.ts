@@ -1,5 +1,5 @@
 import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Base } from '../../models/base.model';
 import { Col } from '../../models/col.model';
 
@@ -24,7 +24,7 @@ export class FormsComponent implements OnInit {
 
   ngOnInit(): void {
     const ob = {};
-    this.formData.forEach(key => ob[key.fieldName] = new FormControl());
+    this.formData.forEach(key => ob[key.fieldName] = new FormControl('', Validators.required));
     this.userForm = new FormGroup(ob);
 
     if (this.editData) {

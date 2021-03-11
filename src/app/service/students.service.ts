@@ -29,7 +29,7 @@ export class StudentsService {
     }, {
       id: '5',
       firstname: 'Agata',
-      lastname: 'Berta',
+      lastname: 'Megg',
       age: '23'
     }
   ];

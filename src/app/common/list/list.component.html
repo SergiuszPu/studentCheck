@@ -1,11 +1,10 @@
 <p-table [columns]="cols" [value]="detail">
-    <ng-template pTemplate="header" let-columns>
+    <ng-template pTemplate="header" let-columns >
         <tr>
             <th *ngFor="let col of columns">
                 {{col.header}}
             </th>
-          <th>
-          </th>
+          <th></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">

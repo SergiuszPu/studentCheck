@@ -40,6 +40,6 @@ export class  EditStudentComponent implements OnInit {
 
   onEditStudent(event): void {
     this.studentService.editStudent(event);
-    this.router.navigate(['/list'], {relativeTo: this.route});
+    this.router.navigate(['/student-list'], {relativeTo: this.route});
   }
 }

@@ -32,6 +32,6 @@ export class  AddStudentComponent implements OnInit {
 
   AddNewStudent(data): void {
     this.studentService.addStudent(data);
-    this.router.navigate(['/list'], {relativeTo: this.route});
+    this.router.navigate(['/student-list'], {relativeTo: this.route});
   }
 }

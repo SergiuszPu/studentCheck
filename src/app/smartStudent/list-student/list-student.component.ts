@@ -4,7 +4,6 @@ import { StudentsService } from '../../service/students.service';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Col } from '../../models/col.model';
 
-
 @Component({
   selector: 'app-items-deliver',
   templateUrl: './list-student.component.html',
@@ -19,10 +18,6 @@ export class ListStudentComponent implements OnInit {
 
   constructor(private productService: StudentsService, private route: ActivatedRoute, private router: Router) {
   }
-
-  // onAdd(event): void {
-  //   this.productService.addStudent(event);
-  // }
 
   onEditStudent(id): void {
     this.router.navigate(['/edit', id], {relativeTo: this.route});

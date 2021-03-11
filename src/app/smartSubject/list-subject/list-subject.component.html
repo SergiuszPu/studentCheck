@@ -1,0 +1,9 @@
+<div class="container">
+  <app-list
+    [detail]="subjects"
+    [cols]="columns"
+    (removeData)="onRemove($event)"
+    (editData)="onEditSubject($event)"
+  >
+  </app-list>
+</div>

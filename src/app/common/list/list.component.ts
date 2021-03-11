@@ -1,6 +1,4 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl} from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Base } from '../../models/base.model';
 import { Col } from '../../models/col.model';
 
