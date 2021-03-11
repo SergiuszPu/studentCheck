@@ -17,8 +17,6 @@ export class ListComponent implements OnInit {
 
   constructor() {}
 
-  editObject = [];
-
   ngOnInit(): void {}
 
   onEdit(id): void {
