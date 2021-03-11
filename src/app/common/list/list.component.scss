@@ -1,31 +1,15 @@
 .box {
-    width: 500px;
+  width: 500px;
 }
-
-.box li {
-    border: 1px solid rgb(150, 129, 129);
-    border-radius: 10px;
-    list-style-type: none;
-    width: 400px;
-    margin: 8px;
-    padding: 5px;
-    display: flex;
-    justify-content: space-around;
-}
-
 button {
     margin: 5px;
 }
 
-
-.list {
-  width: 1500px;
-}
-#Table p-table {
-  white-space:nowrap !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 1250px;
-  font-size: 12px;
-
-}
+//#Table p-table {
+//  white-space:nowrap !important;
+//  overflow: hidden;
+//  text-overflow: ellipsis;
+//  max-width: 1250px;
+//  font-size: 12px;
+//
+//}

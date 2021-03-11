@@ -5,7 +5,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 import { Col } from '../../models/col.model';
 
 @Component({
-  selector: 'app-items-deliver',
+  selector: 'app-student-list',
   templateUrl: './list-student.component.html',
   styleUrls: ['./list-student.component.scss']
 })
@@ -16,8 +16,7 @@ export class ListStudentComponent implements OnInit {
   columns: Col[];
   editStudent: Student[];
 
-  constructor(private productService: StudentsService, private route: ActivatedRoute, private router: Router) {
-  }
+  constructor(private productService: StudentsService, private route: ActivatedRoute, private router: Router) {}
 
   onEditStudent(id): void {
     this.router.navigate(['/edit', id], {relativeTo: this.route});
